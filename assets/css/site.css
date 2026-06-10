@@ -332,24 +332,29 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font-serif); font-weight: 400; }
 }
 /* The WebGL pattern is a pinned, viewport-tall layer the text scrolls over,
    masked with a radial gradient so it fades to plain dark teal at the edges
-   (keeps the centered text legible) — same as the Framer original. */
+   (keeps the centered text legible) — same as the Framer original.
+   NOTE: the -100vh pull-up lives on .manifesto-inner, NOT on the sticky
+   element — a negative margin on the sticky element itself would extend its
+   sticky range past the section and make the pattern bleed over the next one. */
 .manifesto-bg {
   position: sticky;
   top: 0;
   height: 100vh;
   width: 100%;
-  margin-bottom: -100vh;
   pointer-events: none;
   -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #000 0%, transparent 100%);
   mask-image: radial-gradient(50% 50% at 50% 50%, #000 0%, transparent 100%);
 }
 .manifesto-bg canvas { width: 100%; height: 100%; display: block; }
+/* The pattern's 100vh flow slot comes first, so the text begins one screen
+   below and scrolls up into the pinned pattern (matches the original's pacing:
+   a beat of pure pattern, then text passes through, then both leave together). */
 .manifesto-inner {
   position: relative;
   z-index: 2;
   max-width: 640px;
   margin: 0 auto;
-  padding: 240px 24px;
+  padding: 60px 24px 240px;
   display: flex;
   flex-direction: column;
   gap: 140px;
