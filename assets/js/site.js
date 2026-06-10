@@ -101,10 +101,20 @@
     updateParallax();
   }
 
-  /* ----- Marquee: duplicate track content for a seamless loop ----- */
+  /* ----- Marquee: clone the group for a seamless loop, then set the
+     animation duration from the measured width (original: 30px/s) ----- */
   document.querySelectorAll('.marquee-track').forEach(function (track) {
-    track.innerHTML += track.innerHTML;
-    track.setAttribute('aria-hidden', 'false');
+    var group = track.querySelector('.marquee-group');
+    if (!group) return;
+    var clone = group.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+    var setSpeed = function () {
+      var w = group.getBoundingClientRect().width; // includes trailing gap
+      if (w > 0) track.style.animationDuration = (w / 30) + 's';
+    };
+    if (document.readyState === 'complete') setSpeed();
+    else window.addEventListener('load', setSpeed);
   });
 
   /* ----- Unicorn Studio scenes (WebGL backgrounds) ----- */

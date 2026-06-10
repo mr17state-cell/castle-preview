@@ -495,22 +495,31 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font-serif); font-weight: 400; }
 }
 .backed-row img { height: 30px; width: auto; }
 
+/* Ticker matched to the original: 40px gaps, 30px/s velocity (duration set
+   by site.js from the measured group width), per-logo widths on the imgs,
+   and the original's soft asymmetric fade mask. The track holds two
+   identical groups and animates exactly one group width (-50%), so the
+   loop has no seam. */
 .marquee {
-  overflow: hidden;
+  overflow: clip;
   position: relative;
   margin-top: 28px;
-  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 52.8%, transparent 98.8%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 52.8%, transparent 98.8%);
 }
 .marquee-track {
   display: flex;
-  align-items: center;
-  gap: 90px;
   width: max-content;
-  animation: marquee 32s linear infinite;
-  padding: 8px 45px;
+  animation: marquee 36s linear infinite;
+  padding: 8px 0;
 }
-.marquee-track img, .marquee-track svg { height: 24px; width: auto; opacity: .55; }
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-right: 40px; /* the gap between the two groups, part of the loop period */
+}
+.marquee-group img { display: block; height: auto; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
