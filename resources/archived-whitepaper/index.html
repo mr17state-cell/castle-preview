@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Archived] Whitepaper — Castle</title>
+  <meta name="description" content="Turning prediction markets into universal risk infrastructure — Castle's archived whitepaper.">
+
+  <link rel="icon" href="/castle-preview/assets/images/favicon-light.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/castle-preview/assets/images/favicon-dark.png" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="[Archived] Whitepaper — Castle">
+  <meta property="og:description" content="Turning prediction markets into universal risk infrastructure — Castle's archived whitepaper.">
+  <meta property="og:image" content="/castle-preview/assets/images/og-image.png">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600;700&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/castle-preview/assets/css/site.css">
+</head>
+<body>
+
+  <!-- ============ Navigation ============ -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/castle-preview/" aria-label="Castle home">
+        <img src="/castle-preview/assets/images/castle-logo-white.svg" alt="Castle">
+      </a>
+      <div class="nav-links">
+        <a href="/castle-preview/team/">Team</a>
+        <a href="/castle-preview/resources/">Resources</a>
+        <a class="btn btn-light btn-sm nav-cta" href="https://calendar.app.google/ibrjFeohvhhuPHoo8" target="_blank" rel="noopener">Book a Demo</a>
+      </div>
+      <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="/castle-preview/team/">Team</a>
+    <a href="/castle-preview/resources/">Resources</a>
+    <a class="btn btn-light btn-sm" href="https://calendar.app.google/ibrjFeohvhhuPHoo8" target="_blank" rel="noopener">Book a Demo</a>
+  </div>
+
+  <!-- ============ Article ============ -->
+  <main class="page-main">
+    <article class="article">
+      <a class="back-link" href="/castle-preview/resources/">&larr; Back</a>
+      <h1>[Archived] Whitepaper</h1>
+      <div class="blog-meta">
+        <img src="/castle-preview/assets/images/avatar-knight-dark.png" alt=""> Mordred <span>・</span> May 1, 2026
+      </div>
+      <img class="cover" src="/castle-preview/assets/images/blog-archived-whitepaper.png" alt="">
+
+      <div class="prose">
+        <h2>Turning Prediction Markets Into Universal Risk Infrastructure</h2>
+
+        <h3>1. Thesis &amp; Motivation</h3>
+        <p>Prediction markets were designed to convert dispersed information into a tradable price. In theory, this makes them ideal for pricing uncertainty; in practice, most markets sit illiquid with spreads too wide for serious participants.</p>
+        <p>Traditional financial markets avoid this trap because participants have heterogeneous motives. Key players accept negative expectancy trades in exchange for positive utility, creating the benign flow that makes market-making viable. Prediction markets, on the other hand, are zero-sum games; when everyone seeks edge and no one is hedging, markets stay thin.</p>
+        <p>So how do you generate organic flow? You trade insurance.</p>
+        <p>Proprietary trading firms already offer sophisticated derivative products as downside protection to large institutions. Retail investors are either risk-seeking or long-term investors relatively insensitive to short-term shocks. The gap is small to medium-sized businesses: manufacturers exposed to tariff changes, construction firms dependent on regulatory approvals, distributors vulnerable to supply-chain disruptions. Until now, these companies faced concentrated event-driven risks with no efficient hedging options.</p>
+        <p>We’re using prediction markets to democratize bespoke insurance for businesses underserved by traditional markets, turning insurance into a liquid, transparent, and competitive marketplace.</p>
+
+        <h3>2. Our Team</h3>
+        <p>Lucas Cavalieri studied Mathematics at Stanford, with an emphasis on graduate-level coursework in machine learning and optimization. He has experience as a quant trader at Susquehanna and an engineer at Microsoft, and participated in fellowships at Jane Street and D.E. Shaw. He has also represented the U.S. national rugby team.</p>
+        <p>Bruno Felix Castillo graduated from Stanford with degrees in Physics and Mathematics, focusing on probability and statistical mechanics. He previously worked as a quant trader at Flow Traders and participated in competitive programs at Jane Street. He also has experience at a startup spun out of Stanford’s Plasma Physics Lab.</p>
+        <p>Alexander Michael is a Computer Science major at Stanford, where he concentrates on reinforcement learning and financial applications. During gap years, he founded an alternative data company whose products are used by hedge funds and Apple supply-chain partners. He started a hedge fund that trades on the same proprietary datasets, raising $12 million and generating over 125% returns.</p>
+        <p>Arjun Pandey studied Computer Science at Stanford, specializing in optimization, cryptography, and artificial intelligence, while also conducting research on hardware accelerators. He has experience in venture capital and engineering at early-stage startups, and most recently, was a forward deployed engineer at Palantir. He also founded his own sports-tech company, ScoutMe.</p>
+
+        <h3>3. The Liquidity Problem: Market Structure &amp; Adverse Selection</h3>
+        <p>The liquidity problem in prediction markets follows a chicken-and-egg dynamic: low volume discourages market makers, wide spreads and shallow books discourage traders, and the resulting equilibrium is a long tail of ghost-town markets where meaningful size cannot be traded. In order to solve this, we look to the most efficient machine ever created: the stock market.</p>
+        <p>The efficiency of financial markets arises from risk transfer. Many economically significant trades are made not to exploit mispricings, but to reduce variance. Farmers hedge crop prices to stabilize income, airlines hedge fuel costs to manage operating risk, and portfolio managers hedge macroeconomic exposure to concentrate capital on idiosyncratic alpha. Each accepts a certain loss to avoid an uncertain one.</p>
+        <p>In contrast, trading activity on prediction markets is dominated by actors seeking information asymmetry, resulting in adverse selection against market makers. When every trade is an information battle, the market becomes zero-sum: traders profit at the expense of market makers, who withdraw liquidity to avoid losses.</p>
+        <p>This equilibrium persists not because prediction markets are unsuitable for hedging, but because they lack an interface that makes hedging real-world business risks as intuitive as betting on sports.</p>
+
+        <h3>4. The Solution: A Risk Translation Layer for Businesses</h3>
+        <p>Today, SMBs are exposed to discrete events—election outcomes, geopolitical tensions, central bank announcements, weather changes—and are forced to absorb variance they would rather pay to eliminate.</p>
+        <p>Prediction markets price these specific risks. The missing component is translation; businesses cannot naturally express their vulnerabilities, and executing meaningful size in thin markets without significant price impact is non-trivial.</p>
+        <p>We bridge this gap by providing end-to-end conversion of downside risks into prediction market hedges. We explore a company’s risk profile through structured consultations, translate them into specific events with measurable outcomes, and construct an optimized portfolio from available contracts.</p>
+        <p>We broker the transaction over-the-counter through request-for-quote mechanisms to market makers. In the current low-liquidity regime, this avoids any temporary price impact from hitting resting quotes. Although transactions are negotiated OTC, they execute on exchange, ensuring the order flow is public. Consequently, volume increases, price discovery advances, and markets thicken.</p>
+        <p>As liquidity deepens and spreads tighten due to this positive-sum structure, hedging becomes cheaper and more effective, reinforcing demand and completing a positive feedback loop. This is how we start the liquidity flywheel: aligning prediction markets with the economic role played by derivatives in traditional finance.</p>
+        <p>Once this flywheel is in motion, the model creates value for every participant. Businesses receive event-based protection, market makers access benign flow they can profitably warehouse or hedge through correlated instruments, exchanges gain volume and tighter spreads on economically meaningful contracts, and speculators can better express their opinion.</p>
+        <p>Critically, this process also generates market intelligence. As we aggregate hedging demand across clients, we identify which risk categories lack adequate contracts. We feed these insights back to exchanges as contract roadmaps, revealing latent demand they cannot see from order flow alone. In effect, we become a demand oracle, showing the exchanges exactly which new contracts to offer.</p>
+
+        <h3>5. Technical Foundation: AI Agents on Knowledge Graphs</h3>
+        <p>The technical challenge is inference and instrumentation: surfacing latent vulnerabilities, mapping them to discrete events with measurable outcomes, and solving a portfolio optimization problem to design the hedge.</p>
+        <p>Traditional agentic solutions rely on context stuffing: concatenating documents into ever-larger prompts and hoping the model finds what matters. In practice though, this fails. Agents reason poorly over unstructured context. A language model prompted with thousands of pages of filings, news articles, and contract terms will hallucinate relationships and miss dependencies. We solve this by imposing structure through a knowledge graph where the nodes represent entities and events, and edges capture their causal and correlational relationships. This gives agents a clear structure to navigate rather than a bloated context window to search through.</p>
+
+        <h3>5.1 Graph Architecture</h3>
+        <p>Companies enter the graph as structured profiles that capture their products and services, customer segments, geographic footprint, supply chain structure, geopolitical exposures, and upstream dependencies. Events are modeled as discrete occurrences with measurable outcomes. We initially seed the graph with public company data and time-series betas, establishing baseline correlations that enable model development before we engage SMB clients. As private company data flows in, these models are continuously refined and the graph deepens.</p>
+        <p>In the knowledge graph, company-event edges carry direction, magnitude, conditionality, and confidence, while event edges capture critical correlations for sizing positions and understanding portfolio-level exposure. Over time, this architecture yields one of the most comprehensive datasets mapping business characteristics to event-driven exposures.</p>
+
+        <h3>5.2 Business Context Acquisition</h3>
+        <p>Public company data establishes priors for how businesses respond to events. For SMBs, we go deeper. Early engagements with customers will be high-touch, consisting of structured interviews with principals, manual review of supplier contracts and financial statements, and iterative validation of exposure hypotheses. As relationships mature, automation replaces manual effort. Document ingestion pipelines parse contracts and filings continuously. ERP integrations surface transaction-level data in real time. A system that once required hours of interviews now monitors exposures autonomously, flagging shifts as they emerge.</p>
+
+        <h3>5.3 Exposure Identification</h3>
+        <p>Exposure identification employs a multi-agent architecture where specialized agents decompose business risk along distinct dimensions. A supply chain agent analyzes supplier dependencies and geographic concentration. A regulatory agent monitors policy exposure across relevant jurisdictions. A macroeconomic agent evaluates sensitivity to interest rates, currency movements, and commodity prices. Each agent traverses the knowledge graph independently, generating ranked exposure hypotheses.</p>
+        <p>A supervising agent synthesizes outputs from specialized agents, identifying consensus exposures and resolving conflicts through structured critique. When agents disagree, the supervisor queries the graph for comparable past events and requests additional evidence from each agent. The final exposure estimate combines each agent’s specialized analysis into a weighted consensus.</p>
+
+        <h3>5.4 Hedge Construction</h3>
+        <p>We filter available contracts by alignment with the client’s planning horizon, then construct an optimal hedging portfolio. Each position is sized proportionally to the underlying exposure magnitude and the client’s budget constraints, balancing protection against cost. The result is a customized bundle of contracts that addresses their specific risk profile. When event exposures lack corresponding contracts, we track them as latent demand signals. By aggregating these gaps across clients, we provide exchanges with concrete recommendations for new market creation, backed by demonstrated commercial interest. Over time, this creates a tighter fit between the risks clients face and the instruments available to hedge them.</p>
+
+        <h3>6. Scaling Beyond Commercial Risk</h3>
+        <p>Our infrastructure creates two natural paths for expansion.</p>
+        <p>First, a natural extension is portfolio hedging. Investors connect their brokerage accounts and the system identifies equity exposure to macro events before presenting targeted hedges. From there, we expand into parametric insurance for individuals. Homeowners hedge weather events tied to objective triggers like wind speed or precipitation levels; tenants protect against rent increases linked to housing policy outcomes; students limit their losses from changes in federal loan rates. We create insurance where payouts depend on measurable events rather than subjective claims assessment.</p>
+        <p>Second, the knowledge graph itself becomes a strategic asset. Each client engagement refines our ability to map exposures and quantify event-driven risks across industries. This data has direct value to private equity firms evaluating acquisition targets and hedge funds looking to improve sector-specific models, as we provide granular risk profiles that inform pricing and due diligence.</p>
+        <p>The expansion path follows a consistent pattern: identify concentrated exposures, translate them into event-based contracts, construct optimal hedges, and execute with minimal market impact. The knowledge graph doesn’t care whether it’s mapping a manufacturer’s tariff exposure or a homeowner’s hurricane risk; the core value proposition remains consistent.</p>
+
+        <h3>7. Conclusion: Why Now?</h3>
+        <p>Prediction markets are in the midst of an identity crisis, torn between becoming another gambling platform or legitimate financial infrastructure. The long-term value lies in the latter.</p>
+        <p>The regulatory landscape is shifting, institutional capital is flowing in, and exchanges are racing to build compliant infrastructure. But capital and compliance aren’t enough. Without a mechanism to convert real-world hedging demand into market liquidity, prediction markets will remain speculative playgrounds: perpetually thin and irrelevant to serious finance.</p>
+        <p>First movers in infrastructure capture disproportionate returns by setting standards, accumulating proprietary data, and embedding themselves in workflows before competitors can react. We are positioning ourselves as the catalytic layer in this transition: the bridge between legacy risk management and event-based finance. In less than a decade, the largest institutions in finance will be trading event contracts. We will build the rails they trade on.</p>
+      </div>
+    </article>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="footer-art">
+      <img src="/castle-preview/assets/images/footer-landscape.webp" alt="Nature landscape illustration" loading="lazy">
+    </div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="/castle-preview/assets/images/castle-logo-white.svg" alt="Castle">
+        <p>Hedge the unhedgeable</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <span class="col-title">Site</span>
+          <a href="/castle-preview/">Home</a>
+          <a href="/castle-preview/team/">Team</a>
+          <a href="/castle-preview/resources/">Resources</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">Legal</span>
+          <a href="/castle-preview/privacy-policy/">Privacy Policy</a>
+          <a href="/castle-preview/terms-of-service/">Terms</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">Socials</span>
+          <span>Linkedin</span>
+          <span>Twitter / X</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="inner">
+        <span>Copyright © 2026 Castle</span>
+        <a href="https://skarlo.co" target="_blank" rel="noopener">Design by skarlo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/castle-preview/assets/js/site.js"></script>
+</body>
+</html>

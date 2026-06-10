@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Musings on Trading — Castle</title>
+  <meta name="description" content="Notes on markets: price discovery for uncertainty, risk-neutral vs physical measures, edge, adverse selection, and trading for negative edge.">
+
+  <link rel="icon" href="/castle-preview/assets/images/favicon-light.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/castle-preview/assets/images/favicon-dark.png" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Musings on Trading — Castle">
+  <meta property="og:description" content="Notes on markets: price discovery for uncertainty, risk-neutral vs physical measures, edge, adverse selection, and trading for negative edge.">
+  <meta property="og:image" content="/castle-preview/assets/images/og-image.png">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600;700&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/castle-preview/assets/css/site.css">
+</head>
+<body>
+
+  <!-- ============ Navigation ============ -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/castle-preview/" aria-label="Castle home">
+        <img src="/castle-preview/assets/images/castle-logo-white.svg" alt="Castle">
+      </a>
+      <div class="nav-links">
+        <a href="/castle-preview/team/">Team</a>
+        <a href="/castle-preview/resources/">Resources</a>
+        <a class="btn btn-light btn-sm nav-cta" href="https://calendar.app.google/ibrjFeohvhhuPHoo8" target="_blank" rel="noopener">Book a Demo</a>
+      </div>
+      <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="/castle-preview/team/">Team</a>
+    <a href="/castle-preview/resources/">Resources</a>
+    <a class="btn btn-light btn-sm" href="https://calendar.app.google/ibrjFeohvhhuPHoo8" target="_blank" rel="noopener">Book a Demo</a>
+  </div>
+
+  <!-- ============ Article ============ -->
+  <main class="page-main">
+    <article class="article">
+      <a class="back-link" href="/castle-preview/resources/">&larr; Back</a>
+      <h1>Musings on Trading</h1>
+      <div class="blog-meta">
+        <img src="/castle-preview/assets/images/avatar-knight.png" alt=""> Percival <span>・</span> Apr 22, 2026
+      </div>
+      <img class="cover" src="/castle-preview/assets/images/blog-musings-on-trading.png" alt="">
+
+      <div class="prose">
+        <p>The following are notes on markets. Each section makes a single claim that I find worth stating precisely. The pieces are thematically adjacent and mostly build on each other, but they do not form a single argument and need not be read in order.</p>
+
+        <h2>I. Markets as price-discovery for uncertainty</h2>
+
+        <p>Consider the event that Milei loses the 2027 Argentine election, and let p be the probability of that event. The quantity p is socially valuable. A multinational weighing a capital commitment in Argentina, a domestic factory modeling regulatory exposure, a household allocating savings against a possible regime shift: each of them improves its decisions if p is known. And yet nobody writes p on a wall for free. The agent who invested in polling, in model-building, in source cultivation has no reason to donate the result. Absent a mechanism that pays him for revealing it, he keeps it.</p>
+
+        <p>A market resolves this. Introduce a contract on the event that pays one dollar if the event occurs and zero otherwise. The information now has a price. When the agent's belief diverges from the quoted contract price, his trade simultaneously expresses that belief and moves the price toward his fair. Both sides of the trade release information into the public log. Other agents ingest the signal, update, and iterate.</p>
+
+        <p>An open, contract-based mechanism is the lowest-cost protocol we have for aggregating dispersed private information into a single public scalar. Whenever the scalar drifts from the aggregate fair, money sits on the table. Extracting it pushes the market back.</p>
+
+        <p>But the scalar the market produces is not a probability. It is a price. The gap between the two is where most of the analysis lives.</p>
+
+        <h2>II. Price is not probability</h2>
+
+        <p>Under a risk-neutral measure Q with constant risk-free rate, an event contract that pays one dollar if the event occurs at maturity has a current price equal to q, the risk-neutral probability of the event under Q, discounted back at the risk-free rate over the time to maturity.</p>
+
+        <p>If we could freely short YES contracts, the market would quote this price and that would close the matter. Today's venues are structurally different. They list paired YES and NO contracts with no open-ended shorting. By no-arbitrage, the sum of the YES and NO prices must be at least the discount factor over the time to maturity. Strict inequality holds in practice because neither contract can be shorted without collateral.</p>
+
+        <p>If we assume the NO price is approximately one minus the YES price and rearrange, the absolute difference between q and the quoted YES price is bounded above by the distance of the YES price from one-half, multiplied by the accumulated risk-free growth over the time to maturity minus one.</p>
+
+        <p>Numerically, for horizons under ninety days the discrepancy between the contract price and the risk-neutral probability is subpenny. At one year it is at most two cents. At four years it is around eight cents. The tails of long-dated contracts are therefore mechanically overpriced under Q, which is actually consistent with what we observe on the books.</p>
+
+        <h2>III. The physical measure and the risk premium</h2>
+
+        <p>The risk-neutral measure Q and the physical measure P differ by a change of measure whose shape is set by hedging demand. Equity options make the gap vivid. Out-of-the-money puts carry higher implied volatility than out-of-the-money calls at comparable distance from the underlying. Hedging flow concentrates directionally in crash protection, and the skew of the surface is the fingerprint of that asymmetric pressure.</p>
+
+        <p>Prediction markets will develop analogous skew wherever the identification of the bad state is unambiguous. A contract on the invasion of Taiwan, or on regime collapse in a major economy, will price above its physical probability, because institutions will pay a premium to warehouse the opposite side of their real exposure. A contract on a neutral outcome, where neither side has a structural hedger, will not.</p>
+
+        <p>This resolves the apparent tension with the previous section. The market's scalar combines two quantities: the aggregate belief about P(E) and the premium that clears the imbalance between agents who want the exposure and agents who want to shed it. For a speculator trying to recover P(E), the premium is noise to be modeled out. For a hedger buying protection, the premium is the product. Both quantities are read from the same tape.</p>
+
+        <p>More generally, when structural hedging flow enters a market in size, price discovery does not break. It extends. The market begins to produce a second number alongside the first: the market price of risk transfer. This is the formal content of the statement that insurance is market-tradable. The hedger's premium is priced by the same process that prices the event.</p>
+
+        <h2>IV. Finding and extracting edge</h2>
+
+        <p>Positive expectancy is not the same as edge. A passive position in SPY carries positive long-run expectancy. Nobody sensible would call it edge. Edge is a mispricing under the measure that actually governs trading. The relevant measure combines the aggregate belief of market participants with their willingness to pay for carry or protection, and the tradeable fair is the quantity most participants will eventually agree the asset is worth. An asset's price is what the market will pay, not what it theoretically should be.</p>
+
+        <p>This is a Keynesian beauty-contest dynamic. A rational maker prices the asset where he expects other rational makers to price it. If the consensus drifts upward for reasons orthogonal to fundamentals (repeated inflow from a known buyer, a narrative cycle, a structural imbalance in hedging demand), the tradeable fair drifts with it. The fundamental value and the tradeable fair can separate, sometimes by a lot.</p>
+
+        <p>I mean, just look at what happened with GME in 2021.</p>
+
+        <p>Finding a mispricing is insufficient. The trader still has to maximize against it. There is a tradeoff between expressing the view now, which captures known edge but signals the mispricing to other participants, and waiting for the mispricing to widen, which increases the prize but risks it closing before he acts. The optimization is explicit: weight each scenario by probability, evaluate the outcome in each, and choose the action that maximizes the sum.</p>
+
+        <h2>V. Adverse selection</h2>
+
+        <p>Every trade is worse after it executes than it was before. Suppose our fair is $10 and we are willing to sell at $12. When a counterparty lifts us, we have received information: there exists an agent who thinks the contract is worth at least $12. A rational update puts our posterior fair strictly above $10. For the trade to remain coherent, the posterior also has to lie at or below $12; otherwise we knowingly made a losing trade.</p>
+
+        <p>Pursued to its limit, this logic abolishes voluntary trading altogether. Each side infers the other's superior information from his willingness to trade, and both withdraw. We do not observe that equilibrium. Two forces keep the order book alive.</p>
+
+        <p>The first is natural flow. Agents with motives external to the single print, whether entertainment, protection, or mandate, are not optimizing edge on this trade. Their flow is statistically uninformed with respect to the maker's pricing problem, and it dilutes the average adverse move. The second is disagreement over the fair price. When both sides think they are right, both sides trade, and at least one is wrong. The market learns who was wrong after the fact.</p>
+
+        <p>The lesson is to always interrogate a counterparty's incentive. If a stranger offers you a bet that he can finish a beer in under five seconds, the operating assumption has to be that he is motivated by his own self-interest and therefore holds information suggesting he will win. The same rule applies to every price on the screen.</p>
+
+        <h2>VI. A fun example: trading for negative edge</h2>
+
+        <p>A third pattern deserves isolation because it recurs in sophisticated venues. An agent may take a locally negative-expectancy trade because doing so enables him to collect more expectancy elsewhere on a correlated instrument. Consider the following example:</p>
+
+        <p>A large customer known to arrive at 10 a.m. on Thursday and buy a pile of deep-in-the-money calls. Deep ITM calls are almost pure delta, so their price tracks the underlying stock nearly linearly. The customer is uninformed, so the trade is a desirable one to take. The maker begins accumulating stock aggressively before 10 a.m.</p>
+
+        <p>Some of this is legitimate delta hedging. The maker will sell calls and needs the deltas on hand. It is also informational: the maker knows flow is coming that the rest of the world does not know about, so the stock is genuinely underpriced relative to the demand that is about to hit it. Buying is positive-expectancy on that basis.</p>
+
+        <p>In the single-maker case, let the call's fundamental fair be $10 at the open. The maker's buying pushes the stock above its true value, and the call's theo rises to $15. When the customer arrives, the maker lifts him at $16. The maker's stock inventory carries a real loss, since some of it was accumulated above true value. But he booked $6 above fundamental fair on the option leg, comfortably more than the stock push cost him. The maker is happy to lose on the stock, because the stock loss is precisely what made the option sale available, and the option sale dwarfs it.</p>
+
+        <p>The logic changes when other makers catch on. Each of them is willing to accept a worse price on the stock for the same reason the first maker was, and each raises his call quotes along with the rising mark. The prize now has several bidders, and competition drags the sale price down. The call's theo sits at $15, but a maker sells it to the customer at $11. On the tape this reads as four dollars of negative instant edge against theoretical value. The sale is still a dollar above the call's fundamental fair, so the trade remains profitable, but only marginally. The option win no longer dwarfs the stock cost.</p>
+
+        <p>That is the self-limiting feature of the game. The stock push is only rational while the option leg pays for it. As competition compresses the option edge, it compresses the motivation to push, and participants stop over-impacting the stock. The equilibrium settles where the remaining option edge roughly equals the stock cost, and no one pushes further.</p>
+
+        <p>This serves as a useful reminder that fair value is a game-theoretic object, not a physical one. For an extreme application of this concept, check out what Jane Street was doing in India.</p>
+      </div>
+    </article>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="footer-art">
+      <img src="/castle-preview/assets/images/footer-landscape.webp" alt="Nature landscape illustration" loading="lazy">
+    </div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="/castle-preview/assets/images/castle-logo-white.svg" alt="Castle">
+        <p>Hedge the unhedgeable</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <span class="col-title">Site</span>
+          <a href="/castle-preview/">Home</a>
+          <a href="/castle-preview/team/">Team</a>
+          <a href="/castle-preview/resources/">Resources</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">Legal</span>
+          <a href="/castle-preview/privacy-policy/">Privacy Policy</a>
+          <a href="/castle-preview/terms-of-service/">Terms</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">Socials</span>
+          <span>Linkedin</span>
+          <span>Twitter / X</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="inner">
+        <span>Copyright © 2026 Castle</span>
+        <a href="https://skarlo.co" target="_blank" rel="noopener">Design by skarlo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/castle-preview/assets/js/site.js"></script>
+</body>
+</html>

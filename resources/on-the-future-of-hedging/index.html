@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On the Future of Hedging — Castle</title>
+  <meta name="description" content="On the Future of Hedging — how enterprise hedging flow turns prediction markets into the venue for transferring discrete event risk.">
+
+  <link rel="icon" href="/castle-preview/assets/images/favicon-light.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="/castle-preview/assets/images/favicon-dark.png" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="On the Future of Hedging — Castle">
+  <meta property="og:description" content="On the Future of Hedging — how enterprise hedging flow turns prediction markets into the venue for transferring discrete event risk.">
+  <meta property="og:image" content="/castle-preview/assets/images/og-image.png">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600;700&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/castle-preview/assets/css/site.css">
+</head>
+<body>
+
+  <!-- ============ Navigation ============ -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/castle-preview/" aria-label="Castle home">
+        <img src="/castle-preview/assets/images/castle-logo-white.svg" alt="Castle">
+      </a>
+      <div class="nav-links">
+        <a href="/castle-preview/team/">Team</a>
+        <a href="/castle-preview/resources/">Resources</a>
+        <a class="btn btn-light btn-sm nav-cta" href="https://calendar.app.google/ibrjFeohvhhuPHoo8" target="_blank" rel="noopener">Book a Demo</a>
+      </div>
+      <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu">
+    <a href="/castle-preview/team/">Team</a>
+    <a href="/castle-preview/resources/">Resources</a>
+    <a class="btn btn-light btn-sm" href="https://calendar.app.google/ibrjFeohvhhuPHoo8" target="_blank" rel="noopener">Book a Demo</a>
+  </div>
+
+  <!-- ============ Article ============ -->
+  <main class="page-main">
+    <article class="article">
+      <a class="back-link" href="/castle-preview/resources/">&larr; Back</a>
+
+      <h1>On the Future of Hedging</h1>
+
+      <div class="blog-meta">
+        <img src="/castle-preview/assets/images/avatar-knight.png" alt=""> Lancelot <span>・</span> Mar 31, 2026
+      </div>
+
+      <img class="cover" src="/castle-preview/assets/images/blog-on-the-future-of-hedging.png" alt="">
+
+      <div class="prose">
+        <h2>I. Thesis</h2>
+        <p>Markets are the correct venue for pricing discrete uncertainty. The same mechanism that surfaces information about stock prices should surface information about tariffs, sanctions, regulatory rulings, and geopolitical outcomes. In practice, it does not. Contracts on the events that matter to real businesses sit thin and wide, traded mostly by speculators and almost never by the institutions whose balance sheets are actually exposed.</p>
+        <p>The instrument is not wrong. The flow is wrong. Financial markets work because participants enter with heterogeneous motives. Some trade on edge. Others trade to offset variance they already carry. This second group, the hedgers, provides the uninformed flow that makes market-making viable.</p>
+        <p>Enterprises are exposed, by the ordinary conduct of business, to the exact events these contracts reference, and they have no economic way to transfer that exposure. Castle exists to route it. We translate corporate risk into event contracts, execute in size against market makers, and let the resulting prints thicken the books. The machinery that prices the events begins to price the risk transfer that goes with them. This is how insurance becomes market-tradable.</p>
+
+        <h2>II. Enterprises as natural hedgers of event risk</h2>
+        <p>Druckenmiller's rough decomposition of equity returns puts half in broad market factors, three-tenths in industry factors, and the remainder in what is labeled idiosyncratic. The residual is not residual in the statistical sense. Large firm-specific moves are disproportionately driven by discrete events: regulatory rulings, product approvals, tariff changes, litigation outcomes, force majeure. A company, examined honestly, is a wrapper around macro and regulatory events that happen to aggregate through an operational layer.</p>
+        <p>Enterprises already hedge the continuous axes of their exposure. Foreign exchange, interest rates, and liquid commodities have been tractable for decades through established derivatives. The discrete axis has been underserved. Lloyd's syndicates and the structured-products desks at bulge-bracket banks will underwrite bespoke event protection for clients large enough to justify the cost, but minimum sizes exclude most of the mid-market.</p>
+        <p>The gap is not a small one. Mid-sized manufacturers exposed to tariff changes, construction firms dependent on regulatory approvals, distributors vulnerable to supply-chain disruptions: none of them have a way to shed the variance, and all of them would pay to do so.</p>
+        <p>Prediction markets, once they accept enterprise hedging flow in size, fill this gap.</p>
+
+        <h2>III. The risk translation layer</h2>
+        <p>Prediction markets already price many of the events that matter to enterprises. What they do not do is let an operating business walk up and buy protection. The contracts are not indexed to the company's planning vocabulary. The books cannot absorb meaningful size without impact. The surface area between corporate risk and event-contract execution is almost entirely missing. We build that surface area.</p>
+        <p>The workflow is four stages:</p>
+        <p>In discovery, we run structured consultations with the principals, review supplier contracts, financial statements, and operating exposures, and build a profile of the firm's vulnerabilities as they actually sit on the balance sheet.</p>
+        <p>In translation, we map each vulnerability to a set of event contracts whose resolution tracks a measurable minimum impact on P&amp;L. When a contract that ought to exist is not yet listed, we create it.</p>
+        <p>In construction, we size each position against the underlying exposure and the client's budget, balancing protection against premium spend. The result is a portfolio, not a single bet.</p>
+        <p>In execution, we broker the transaction over-the-counter through request-for-quote to market makers. Transactions are negotiated off-book and printed on-exchange, which avoids the temporary price impact of walking a thin lit book while preserving the exchange's role as the public record.</p>
+
+        <h2>IV. Technical foundation</h2>
+        <p>The engineering problem reduces to inference and instrumentation. We surface latent vulnerabilities inside a firm, map them to discrete events with measurable outcomes, and solve a portfolio construction problem under capital and basis-risk constraints. Structure comes from a knowledge graph whose nodes are entities (companies, products, jurisdictions) and events (regulatory rulings, elections, policy actions), with edges carrying direction, magnitude, conditionality, and confidence.</p>
+        <p>Exposure identification runs on a multi-agent system: specialized agents for supply-chain, regulatory, and macroeconomic dimensions, each traversing the graph independently, reconciled by a supervisor that resolves disagreement through structured critique against comparable past events. Hedge construction is then a portfolio optimization problem over the available contract universe, constrained by budget, basis tolerance, and planning horizon.</p>
+
+        <h2>V. Why now</h2>
+        <p>Structural transitions in financial infrastructure follow a recurring shape. A risk or instrument tractable only through bespoke, high-fixed-cost channels migrates onto a low-fixed-cost venue. Margins compress. The market grows by an order of magnitude.</p>
+        <p>A decade from now, the modal mid-market enterprise hedge against discrete event risk will run through this infrastructure. Bespoke underwriting will persist at the top of the market for idiosyncratic and high-notional exposures, the way over-the-counter credit markets persist alongside cleared CDS. Everything below that tier will be electronic. We are building it.</p>
+      </div>
+    </article>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="footer-art">
+      <img src="/castle-preview/assets/images/footer-landscape.webp" alt="Nature landscape illustration" loading="lazy">
+    </div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="/castle-preview/assets/images/castle-logo-white.svg" alt="Castle">
+        <p>Hedge the unhedgeable</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <span class="col-title">Site</span>
+          <a href="/castle-preview/">Home</a>
+          <a href="/castle-preview/team/">Team</a>
+          <a href="/castle-preview/resources/">Resources</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">Legal</span>
+          <a href="/castle-preview/privacy-policy/">Privacy Policy</a>
+          <a href="/castle-preview/terms-of-service/">Terms</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">Socials</span>
+          <span>Linkedin</span>
+          <span>Twitter / X</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="inner">
+        <span>Copyright © 2026 Castle</span>
+        <a href="https://skarlo.co" target="_blank" rel="noopener">Design by skarlo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/castle-preview/assets/js/site.js"></script>
+</body>
+</html>
