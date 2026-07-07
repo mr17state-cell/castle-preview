@@ -71,6 +71,7 @@ loaded from Google Fonts in each page's `<head>`.
 - Hero says "Hedge the unhedgable", footer says "Hedge the unhedgeable" — as live.
 - Footer "Linkedin" / "Twitter / X" are non-linked labels (they have no URLs on
   the live site either). Add `<a href>`s in the footer of each page when ready.
-- The live Framer marquee contains a broken item (a layer named "coinbase" that
-  renders the Castle wordmark); it was omitted here. To add Coinbase, drop an
-  SVG into `assets/images/` and add an `<img>` to the marquee in `index.html`.
+- The live Framer marquee contains a broken item: a layer named "coinbase" that
+  accidentally renders the Castle wordmark. This rebuild ships a real Coinbase
+  logo (`assets/images/angel-coinbase.svg`) in that slot instead — remove the
+  `<img>` from the marquee in `index.html` if Coinbase shouldn't be listed.

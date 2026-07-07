@@ -22,61 +22,97 @@
     });
   }
 
-  /* ----- Scroll-in reveals (rise + fade, staggered within card groups) -----
+  /* ----- Scroll-in reveals (rise + fade, like the original) -----
      .reveal can be set in the HTML; common card/heading elements get it
-     automatically so every page animates without per-file markup. */
+     automatically so every page animates without per-file markup.
+     Original behavior: trigger at 50% visibility, run once, stagger
+     siblings 0.2s apart — except blog cards, which all rise together. */
   ['.feature-card', '.blog-card', '.team-card', '.section-header'].forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el) { el.classList.add('reveal'); });
   });
 
   // stagger: delay each element by its index among reveal-siblings
   document.querySelectorAll('.reveal').forEach(function (el) {
+    if (el.classList.contains('blog-card')) return; // original: no stagger on blog cards
     var siblings = el.parentElement ? [].filter.call(el.parentElement.children, function (c) {
       return c.classList.contains('reveal');
     }) : [el];
     var i = siblings.indexOf(el);
-    if (i > 0) el.style.transitionDelay = (i * 0.12) + 's';
+    if (i > 0) el.style.transitionDelay = (i * 0.2) + 's';
   });
+
+  // the first product panel rises too (original: delay 0.2s, fires as soon
+  // as any pixel is visible; the other panels stay static)
+  var firstPanelCard = document.querySelector('.product-panel .product-card');
+  if (firstPanelCard) {
+    firstPanelCard.classList.add('reveal');
+    firstPanelCard.style.transitionDelay = '0.2s';
+    firstPanelCard.setAttribute('data-reveal-eager', '');
+  }
 
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealEls.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          en.target.classList.add('in');
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
+    var makeObserver = function (threshold) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            en.target.classList.add('in');
+            obs.unobserve(en.target);
+          }
+        });
+      }, { threshold: threshold });
+      return obs;
+    };
+    var ioHalf = makeObserver(0.5);
+    var ioEager = makeObserver(0);
+    revealEls.forEach(function (el) {
+      (el.hasAttribute('data-reveal-eager') ? ioEager : ioHalf).observe(el);
+    });
   } else {
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ----- Manifesto: words cascade bright when a block crosses ~60% of the
-     viewport, and dim again on the way back up (matches the original) ----- */
+  /* ----- Manifesto: each word's brightness is a pure function of scroll.
+     As a block's top edge travels from 75% to 50% of the viewport height,
+     its words go 0.1 → 1 one after another (word i of n lights over the
+     [i/n, (i+1)/n] slice of that range). Stop scrolling and the reveal
+     freezes mid-word; scroll up and it reverses — same as the original. ----- */
   var blocks = document.querySelectorAll('.manifesto-block');
-  if (blocks.length) {
+  if (blocks.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var blockWords = [];
     blocks.forEach(function (block) {
       var words = block.textContent.trim().split(/\s+/);
       block.textContent = '';
-      words.forEach(function (word, i) {
+      var spans = words.map(function (word, i) {
         var span = document.createElement('span');
         span.className = 'w';
         span.textContent = word;
-        span.style.setProperty('--d', (i * 0.04) + 's');
         block.appendChild(span);
         if (i < words.length - 1) block.appendChild(document.createTextNode(' '));
+        return span;
       });
+      blockWords.push({ block: block, spans: spans });
     });
 
+    var revealTicking = false;
     var updateReveal = function () {
-      var line = window.innerHeight * 0.62;
-      blocks.forEach(function (block) {
-        block.classList.toggle('lit', block.getBoundingClientRect().top < line);
+      revealTicking = false;
+      var start = window.innerHeight * 0.75;
+      var range = window.innerHeight * 0.25;
+      blockWords.forEach(function (item) {
+        var wordsLit = (start - item.block.getBoundingClientRect().top) / range * item.spans.length;
+        item.spans.forEach(function (w, i) {
+          var t = wordsLit - i;
+          w.style.opacity = t <= 0 ? '0.1' : t >= 1 ? '1' : (0.1 + 0.9 * t).toFixed(3);
+        });
       });
     };
-    window.addEventListener('scroll', updateReveal, { passive: true });
+    window.addEventListener('scroll', function () {
+      if (!revealTicking) {
+        revealTicking = true;
+        requestAnimationFrame(updateReveal);
+      }
+    }, { passive: true });
     window.addEventListener('resize', updateReveal);
     updateReveal();
   }
