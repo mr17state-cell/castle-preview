@@ -27,7 +27,10 @@ privacy-policy/index.html       Privacy Policy
 terms-of-service/index.html     Terms of Service
 assets/css/site.css             The whole design system (colors/type tokens at the top)
 assets/js/site.js               Nav state, mobile menu, scroll reveals, manifesto
-                                word-reveal, logo marquee, WebGL bootstrap
+                                word-reveal, logo marquee, hover enhancements,
+                                Lenis smooth-scroll bootstrap, WebGL bootstrap
+assets/js/lenis.min.js          Lenis 1.3.11 (vendored) — smooth scrolling, same
+                                library/duration (0.6s) as the Framer original
 assets/images/                  All images, with friendly names
 assets/unicorn/manifesto-bg.json  WebGL scene for the dark manifesto section
 ```

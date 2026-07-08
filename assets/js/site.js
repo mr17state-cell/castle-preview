@@ -153,6 +153,55 @@
     else window.addEventListener('load', setSpeed);
   });
 
+  /* ----- Current-page nav link (original underlines it) ----- */
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function (a) {
+    if (a.pathname === window.location.pathname) a.setAttribute('aria-current', 'page');
+  });
+
+  /* ----- Button hover label: duplicate the label so it can slide out
+     left while the copy slides in from the right (original behavior;
+     styles in site.css under .btn-track) ----- */
+  document.querySelectorAll('.btn').forEach(function (btn) {
+    var label = btn.textContent.trim();
+    if (!label || btn.children.length) return;
+    btn.textContent = '';
+    var track = document.createElement('span');
+    track.className = 'btn-track';
+    for (var i = 0; i < 2; i++) {
+      var s = document.createElement('span');
+      s.textContent = label;
+      if (i === 1) s.setAttribute('aria-hidden', 'true');
+      track.appendChild(s);
+    }
+    btn.appendChild(track);
+  });
+
+  /* ----- Blog covers: wrap in a clipping box so the hover zoom
+     (scale 1.03 + blur, like the original) stays inside the corners ----- */
+  document.querySelectorAll('.blog-card img.cover').forEach(function (img) {
+    var wrap = document.createElement('div');
+    wrap.className = 'cover-wrap';
+    img.parentNode.insertBefore(wrap, img);
+    wrap.appendChild(img);
+  });
+
+  /* ----- Smooth scrolling: Lenis, like the original (its Smooth Scroll
+     component is Lenis with duration = intensity/10 = 0.6) ----- */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var lenisScript = document.createElement('script');
+    lenisScript.src = '/castle-preview/assets/js/lenis.min.js';
+    lenisScript.onload = function () {
+      if (typeof window.Lenis !== 'function') return;
+      var lenis = new window.Lenis({ duration: 0.6 });
+      var raf = function (time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      };
+      requestAnimationFrame(raf);
+    };
+    document.head.appendChild(lenisScript);
+  }
+
   /* ----- Unicorn Studio scenes (WebGL backgrounds) ----- */
   if (document.querySelector('[data-us-project],[data-us-project-src]')) {
     var s = document.createElement('script');
