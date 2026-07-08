@@ -221,7 +221,9 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font-serif); font-weight: 400; }
   text-align: center;
   color: #ffffff;
   overflow: hidden;
-  background: #1c2a24; /* fallback while WebGL scene loads */
+  background: #171717; /* original's hero backdrop — the WebGL scene renders
+                          at .95 opacity, so 5% of this bleeds through and
+                          subtly darkens the whole hero */
 }
 .hero-bg {
   position: absolute;
