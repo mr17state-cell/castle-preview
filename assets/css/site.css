@@ -116,7 +116,6 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font-serif); font-weight: 400; }
   letter-spacing: -0.02em;
   border-radius: var(--radius-sm);
   padding: 12px 24px;
-  overflow: clip; /* clips the sliding label track (hover effect) */
   transition: background-color .45s cubic-bezier(.25, .9, .35, 1);
   cursor: pointer;
   border: none;
@@ -127,12 +126,13 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font-serif); font-weight: 400; }
    identical copy slides in from the right (original's button behavior —
    spring ≈ duration 1 / bounce .2, approximated with an eased cubic).
    The duplicate label span is added by site.js. */
-.btn-track { position: relative; display: inline-block; transition: transform .6s cubic-bezier(.3, 1.25, .45, 1); }
+.btn-track { position: relative; display: inline-block; overflow: clip; }
+.btn-track > span { display: inline-block; transition: transform .6s cubic-bezier(.3, 1.25, .45, 1); }
 .btn-track > span + span { position: absolute; left: 100%; top: 0; width: 100%; text-align: center; }
-.btn:hover .btn-track { transform: translateX(-100%); }
+.btn:hover .btn-track > span { transform: translateX(-100%); }
 @media (prefers-reduced-motion: reduce) {
-  .btn-track { transition: none; }
-  .btn:hover .btn-track { transform: none; }
+  .btn-track > span { transition: none; }
+  .btn:hover .btn-track > span { transform: none; }
 }
 
 .btn-light { background: #ffffff; color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
