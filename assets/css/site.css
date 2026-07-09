@@ -588,7 +588,9 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--font-serif); font-weight: 400; }
 .marquee {
   overflow: clip;
   position: relative;
-  margin-top: 30px; /* original: 30px below "And angels from" */
+  max-width: 1136px; /* original: a centered 1136px strip, not full-bleed —
+                        the fade covers proportionally more of the sides */
+  margin: 30px auto 0; /* 30px below "And angels from" */
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 52.8%, transparent 98.8%);
   mask-image: linear-gradient(90deg, transparent 0%, #000 52.8%, transparent 98.8%);
 }
